@@ -1,3 +1,156 @@
+/* === HC Form base CSS (scoped) === */
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap);
 
-/* test default */
-#entryForm { outline: 4px solid hotpink !important; }
+/* 変数は #entryForm にスコープ */
+#entryForm{
+  --orange:#f07c00;
+  --orange-hover:#d56e00;
+  --brand:#6ba6d9;
+  --base:#dde1e6;
+  --active:#2c6aa6;
+  --dot-size:36px;
+  --rail-h:6px;
+  --rail-top: calc(var(--dot-size)/2 - var(--rail-h)/2);
+  --coach-icon-url:url("https://hitocareer.com/inquiry/wp-content/uploads/2025/08/chat_icon.webp");
+  font-family: 'Noto Sans JP', sans-serif;
+  box-sizing: border-box;
+}
+
+/* 全体レイアウト */
+#entryForm, #step-form{ width:min(950px,100%); margin:0 auto; }
+@media (max-width:560px){
+  #entryForm{ padding:0 30px; }
+}
+
+/* ステッパー */
+#entryForm .step-header{ display:none!important; }
+#entryForm .stepper{ width:100%; margin:0 auto 20px; position:relative; padding-top:calc(var(--dot-size)/2 + 12px); }
+#entryForm .stepper::before{
+  content:""; position:absolute; left:calc(var(--dot-size)/2); right:calc(var(--dot-size)/2);
+  top:var(--rail-top); height:var(--rail-h); border-radius:999px; background:var(--base);
+}
+#entryForm .stepper .stepper-fill{
+  position:absolute; left:calc(var(--dot-size)/2); right:calc(var(--dot-size)/2);
+  top:var(--rail-top); height:var(--rail-h); border-radius:999px; background:var(--active);
+  transform-origin:left center; transform:scaleX(1); transition:width .45s ease, transform .45s ease;
+}
+#entryForm .stepper .stepper-list{
+  list-style:none; margin:0; padding:0; display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:1;
+}
+#entryForm .stepper .item{ text-align:center; width:max(48px,calc(100%/6)); }
+#entryForm .stepper .dot{
+  width:var(--dot-size); height:var(--dot-size); border-radius:999px; box-sizing:border-box;
+  border:3px solid var(--base); background:#fff; color:#7b8088;
+  display:inline-flex; align-items:center; justify-content:center; font-size:16px;
+}
+#entryForm .stepper .item.current .dot{ background:#c7e5ff; border-color:#c7e5ff; font-size:20px; font-weight:700; color:#2c6aa6; }
+#entryForm .stepper .item.done .dot{ background:#e6eef4; border-color:#2c6aa6; color:var(--brand); }
+#entryForm .stepper .label{ display:block; margin-top:8px; font-size:11px; color:#6b7280; white-space:nowrap; }
+
+/* ステップ共通 */
+#entryForm .step{ text-align:center; }
+#entryForm .step>label{
+  font-weight:700; color:#2c6aa6; font-size:16px; display:block; width:80%; margin:0 auto 4px; text-align:left; padding:8px 0 0;
+}
+
+/* コーチバブル */
+#entryForm .coach-bubble{ width:80%; margin:6px auto 10px; display:flex; align-items:center; gap:10px; }
+#entryForm .cb-icon{
+  width:50px; height:50px; border-radius:50%; overflow:hidden; flex:0 0 50px;
+  background:var(--coach-icon-url) center/cover no-repeat; box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(0,0,0,.06);
+}
+#entryForm .cb-text{
+  position:relative; background:#cfeff1; border-radius:999px; padding:10px 16px; color:#000; font-size:11px; font-weight:700;
+}
+#entryForm .cb-text:after{
+  content:""; position:absolute; left:-10px; top:50%; transform:translateY(-50%);
+  border:8px solid transparent; border-right-color:#cfeff1;
+}
+
+/* プライバシー注記 */
+#entryForm .privacy-note{ width:80%; margin:2px auto 8px; font-size:14px; color:#000; text-align:left; display:none; }
+
+/* 選択ボタン */
+#entryForm .choice-row{ margin-top:8px; }
+#entryForm .btn-choice_01, #entryForm .btn-choice_02{
+  width:200px; height:48px; font-size:16px; background:#6ba6d9; color:#fff; border:none; border-radius:6px; cursor:pointer;
+  box-shadow:0 5px 0 #2c6aa6,0 8px 14px #0000001f; transition:.15s; margin:10px 8px 0;
+}
+#entryForm .btn-choice_01:hover, #entryForm .btn-choice_02:hover{ background:#538ec3; }
+
+/* ナビゲーション */
+#entryForm .nav-row{ width:80%; margin:20px auto 0; display:flex; justify-content:space-between; align-items:center; }
+#entryForm .btn-back{
+  width:70px; height:44px; font-size:16px; border-radius:6px; cursor:pointer; border:2px solid #6ba6d9; background:#fff; color:#6ba6d9;
+}
+#entryForm .btn-back:hover{ background:#eaf3fb; }
+#entryForm .btn-next{
+  width:140px; height:44px; font-size:16px; border-radius:6px; cursor:pointer; border:2px solid #6ba6d9; background:#6ba6d9; color:#fff; transition:.15s;
+  box-shadow:0 4px 0 #2c6aa6,0 5px 9px #0000001f;
+}
+#entryForm .btn-next:hover{ background:#fff; color:#6ba6d9; }
+
+/* 入力・エラー */
+#entryForm .error-text{ color:#d93025; margin-top:8px; font-size:13px; min-height:1.2em; }
+#entryForm .invalid{ border-color:#d93025!important; }
+#entryForm #step3 input, #entryForm #step4 input, #entryForm #step5 input, #entryForm #step6 input{
+  width:80%; padding:10px; line-height:1.6; border:1px solid #ccc; border-radius:6px; background:#fff; font-size:16px; margin-top:8px;
+}
+
+/* マルチセレクト */
+#entryForm .multi-select{ width:80%; margin:8px auto 0; position:relative; text-align:left; }
+#entryForm .multi-select-display{
+  padding:10px; border:1px solid #ccc; border-radius:6px; background:#fff; cursor:pointer; line-height:1.6; font-size:16px;
+}
+#entryForm .multi-select-display:focus{ outline:none; border-color:#6ba6d9; box-shadow:0 0 0 2px rgba(107,166,217,.2); }
+#entryForm .multi-select-dropdown{
+  position:absolute; left:0; right:0; top:calc(100% + 6px); background:#fff; border:1px solid #ddd; border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08); max-height:320px; overflow:auto; z-index:1000;
+}
+#entryForm .multi-select-dropdown ul{ list-style:none; padding:12px; margin:0; }
+#entryForm .multi-select-dropdown li{ margin:6px 0; }
+#entryForm .multi-select-dropdown label{ display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none; }
+#entryForm #locationDropdown .group{ margin:8px 0; }
+#entryForm #locationDropdown .group-toggle{
+  width:100%; display:flex; align-items:center; justify-content:space-between; padding:8px 10px; background:#f6f8fb; border:1px solid #e2e8f0; border-radius:6px; font-weight:700; cursor:pointer;
+}
+#entryForm #locationDropdown .group-toggle::after{ content:"▾"; }
+#entryForm #locationDropdown .group[data-expanded="false"] .group-toggle::after{ content:"▸"; }
+#entryForm #locationDropdown .group-items{ list-style:none; margin:6px 0 0; padding:0 6px; }
+@media (max-width:560px){
+  #entryForm #locationDropdown .group[data-expanded="false"] .group-items{ display:none; }
+}
+
+/* 同意＆送信 */
+#entryForm .consent-wrap{ width:100%; margin:18px auto 0; display:flex; flex-direction:column; align-items:center; gap:12px; }
+#entryForm .consent-note{ font-size:10px; color:#5a5a5a; margin:0; font-weight:700; }
+#entryForm .consent-note a{ color:#2c6aa6; text-decoration:underline; }
+#entryForm .submit-stack{ position:relative; display:inline-block; margin:24px 0 12px; }
+#entryForm .btn-kicker{
+  position:absolute; top:0; left:50%; transform:translate(-50%,-60%); padding:6px 12px; font-size:12px; font-weight:700; white-space:nowrap;
+  color:var(--orange); background:#fff; border:1px solid var(--orange); border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,.06); z-index:2; pointer-events:none;
+}
+#entryForm .btn-submit{
+  width:320px; height:56px; border-radius:8px; cursor:pointer; font-size:18px; font-weight:700;
+  border:2px solid var(--orange); background:#fff; color:var(--orange); box-shadow:0 4px 0 #ddd8d8,0 5px 9px #0000001f; transition:.15s; position:relative;
+}
+#entryForm .btn-submit::after{ content:'›'; font-size:20px; font-weight:700; line-height:1; position:absolute; right:14px; top:50%; transform:translateY(-50%); }
+#entryForm .btn-submit.active{ background:var(--orange); color:#fff; box-shadow:0 4px 0 #b65400,0 5px 9px #0000002f; }
+#entryForm .btn-submit.active:hover{ background:var(--orange-hover); }
+
+/* ローディングオーバーレイ（これは form の外にあるので ID セレクタで） */
+#loadingOverlay{
+  position:fixed; inset:0; display:none; background:rgba(255,255,255,.85); align-items:center; justify-content:center; z-index:9999;
+}
+#loadingOverlay.show{ display:flex; }
+#loadingOverlay .loading-box{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+#loadingOverlay .spinner{
+  width:64px; height:64px; border:6px solid #e5eff7; border-top-color:var(--brand,#6ba6d9); border-radius:50%; animation:spin 1s linear infinite;
+}
+#loadingOverlay .spinner-text{ font-size:16px; font-weight:700; color:var(--brand,#6ba6d9); user-select:none; text-align:center; }
+@keyframes spin{ to{ transform:rotate(360deg) } }
+
+/* スマホ調整 */
+@media (max-width:560px){
+  #entryForm, #step-form{ width:100%; padding:0 30px; }
+}
