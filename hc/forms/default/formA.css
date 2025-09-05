@@ -39,7 +39,7 @@
 .multi-select-dropdown label{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
 .multi-select-dropdown input[type="checkbox"]{width:18px;height:18px}
 #locationDropdown .group{margin:8px 0}
-#locationDropdown .group-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#f6f8fb;border:1px solid #e2e8f0;border-radius:6px;font-weight:700;cursor:pointer}
+#locationDropdown .group-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#f6f8fb;border:1px solid #e2e8f0;border-radius:6px;font-weight:700;cursor:pointer;font-color:#000000}
 #locationDropdown .group-toggle::after{content:"▾"}
 #locationDropdown .group[data-expanded="false"] .group-toggle::after{content:"▸"}
 #locationDropdown .group-items{list-style:none;margin:6px 0 0;padding:0 6px}
@@ -71,3 +71,58 @@
 #entryForm,#step-form{width:60%!important;margin:0 auto!important;max-width:none!important}
 @media (max-width:560px){#entryForm,#step-form{width:100%!important;padding:0 30px!important}}
 @media (max-width:560px){#entryForm{display:flex!important;justify-content:center!important;align-items:flex-start!important;padding:0 10px!important;box-sizing:border-box!important;margin:0 auto!important;width:100%!important}#step-form{width:100%!important;max-width:520px!important;margin:0 auto!important;box-sizing:border-box!important}}
+
+/* ===== 追加: mobile の multi-select をボトムシート化（約80%画面高） ===== */
+@media (max-width: 560px) {
+  :root { --ms-modal-height: 80vh; }
+
+  /* コンテナは位置依存を無くす */
+  .multi-select { position: static; }
+
+  /* 開いている間の半透明バックドロップ */
+  .multi-select:has(.multi-select-dropdown:not([hidden]))::before,
+  .multi-select.open::before,
+  .multi-select[data-open="true"]::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);
+    z-index: 999;
+  }
+
+  /* ドロップダウン → 画面下からのボトムシート */
+  .multi-select-dropdown {
+    position: fixed !important;
+    left: 0; right: 0; bottom: 0;
+    height: var(--ms-modal-height);
+    max-height: calc(100vh - 60px);
+    border-radius: 16px 16px 0 0;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 -12px 30px rgba(0,0,0,.12);
+    margin: 0 !important;
+    padding: 10px 16px calc(env(safe-area-inset-bottom) + 16px);
+    overflow: auto;
+    z-index: 1000;
+    top: auto !important; /* 既存 absolute 用スタイルを上書き */
+  }
+
+  /* つまみ（ドラッグハンドル風） */
+  .multi-select-dropdown::before {
+    content: "";
+    display: block;
+    width: 44px; height: 4px;
+    background: #cbd5e1;
+    border-radius: 999px;
+    margin: 6px auto 8px;
+    position: sticky; top: 0;
+  }
+
+  /* リスト密度を高めて、より多くの選択肢を表示 */
+  .multi-select-dropdown ul { padding: 8px 0 12px; }
+  .multi-select-dropdown li { margin: 4px 0; }
+  .multi-select-dropdown label { padding: 8px 6px; }
+  .multi-select-dropdown input[type="checkbox"] { width: 22px; height: 22px; }
+
+  /* 表示フィールドは下層に（オーバーレイと競合しないように） */
+  .multi-select-display { position: relative; z-index: 0; }
+}
