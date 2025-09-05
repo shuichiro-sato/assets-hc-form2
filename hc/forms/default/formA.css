@@ -262,8 +262,8 @@
   #locationDropdown {
     position: absolute !important;
     top: 40px !important;
-    left: 20px !important;
-    right: 20px !important;
+    left: 30px !important;
+    right: 30px !important;
     z-index: 1000 !important;
     font-size: 18px !important;           /* 中身の基本文字サイズを少し大きく */
     -webkit-text-size-adjust: 100%;
@@ -276,7 +276,7 @@
   #locationDropdown .group-items label span {
     color: #000 !important;
     text-decoration: none !important;
-    font-size: 18px !important;            /* ラベルを大きく */
+    font-size: 14px !important;            /* ラベルを大きく */
     line-height: 1.6 !important;
   }
 }
