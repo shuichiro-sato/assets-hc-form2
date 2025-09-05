@@ -214,3 +214,23 @@
     display:none !important;
   }
 }
+/* ===== 修正：デフォルトはカスタムUIを表示。ネイティブは“明示的に使う時だけ”表示 ===== */
+.multi-select-native{ display:none; }
+
+/* body に .use-native を付けた時だけネイティブUIへ切替 */
+@media (max-width:560px){
+  body.use-native .multi-select-native{
+    display:block !important;
+    font-size:16px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    background:#fff;
+    width:100%;
+    min-height:240px;
+  }
+  body.use-native .multi-select .multi-select-display,
+  body.use-native .multi-select .multi-select-dropdown{
+    display:none !important;
+  }
+}
