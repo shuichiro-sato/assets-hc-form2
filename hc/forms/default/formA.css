@@ -126,3 +126,31 @@
   /* 表示フィールドは下層に（オーバーレイと競合しないように） */
   .multi-select-display { position: relative; z-index: 0; }
 }
+/* hotfix: バックドロップ常時表示を停止し、開いている時だけ出す */
+@media (max-width:560px){
+  /* 既存の ::before バックドロップを一旦オフ */
+  .multi-select::before{ display:none !important; content:none !important; }
+
+  /* 開いている状態の定義
+     1) inline styleで display:block になっている
+     2) .is-open クラスが付いている
+     3) 親に .open または [data-open="true"] が付いている
+     いずれかを満たした時だけバックドロップを表示 */
+  .multi-select:has(.multi-select-dropdown[style*="display: block"])::before,
+  .multi-select:has(.multi-select-dropdown.is-open)::before,
+  .multi-select.open::before,
+  .multi-select[data-open="true"]::before{
+    display:block !important;
+    content:"";
+    position:fixed; inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:999;
+  }
+
+  /* ボトムシート本体を「開いている時」だけ確実に見せる保険 */
+  .multi-select.open .multi-select-dropdown,
+  .multi-select[data-open="true"] .multi-select-dropdown,
+  .multi-select .multi-select-dropdown.is-open{
+    display:block !important;
+  }
+}
