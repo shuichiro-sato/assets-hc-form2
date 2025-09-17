@@ -105,7 +105,7 @@
   width: 200px; height: 80px; font-size: 18px; background: #004aac; color: #fff;
   border: none; border-radius: 6px; cursor: pointer; margin: 10px 8px 0;
 }
-.btn-choice_01:hover, .btn-choice_02:hover { background: #538ec3; }
+.btn-choice_01:hover, .btn-choice_02:hover { background: #7b8088; }
 
 /* nav buttons */
 .nav-row {
