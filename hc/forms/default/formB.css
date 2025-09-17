@@ -65,13 +65,13 @@
 .stepper .item.done .dot { background: #e6eef4; border-color: #2c6aa6; color: var(--brand); }
 .stepper .label { display: block; margin-top: 8px; font-size: 8px; color: #6b7280; white-space: nowrap; }
 @media (max-width: 560px) {
-  .stepper .label { font-size: 11px; white-space: normal; }
+  .stepper . { font-size: 11px; white-space: normal; }
 }
 
 /* step base */
 .step { text-align: center; }
 .step > label {
-  font-weight: 700; color: #fff; font-size: 16px;
+  font-weight: 700; color: #004aac; font-size: 16px;
   display: block; width: 80%; margin: 0 auto 4px; text-align: left;
   font-family: Noto Sans JP, sans-serif; padding: 8px 0 0;
 }
