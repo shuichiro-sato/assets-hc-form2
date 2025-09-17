@@ -56,11 +56,11 @@
 .stepper .dot {
   width: var(--dot-size); height: var(--dot-size);
   border-radius: 999px; box-sizing: border-box;
-  border: 3px solid var(--base); background: #fff; color: #000;
+  border: 3px solid var(--base); background: #fff; color: #7b8088;
   display: inline-flex; align-items: center; justify-content: center; font-size: 16px;
 }
 .stepper .item.current .dot {
-  background: #004aac; border-color: #004aac; font-size: 20px; font-weight: 700; color: #2c6aa6;
+  background: #004aac; border-color: #004aac; font-size: 20px; font-weight: 700; color: #fff;
 }
 .stepper .item.done .dot { background: #e6eef4; border-color: #2c6aa6; color: var(--brand); }
 .stepper .label { display: block; margin-top: 8px; font-size: 8px; color: #6b7280; white-space: nowrap; }
