@@ -102,7 +102,7 @@
 /* choices */
 .choice-row { margin-top: 8px; }
 .btn-choice_01, .btn-choice_02 {
-  width: 200px; height: 80px; font-size: 18px; background: #004aac; color: #fff;
+  width: 200px; height: 80px; font-size: 18px; background: #185cb6; color: #fff;
   border: none; border-radius: 6px; cursor: pointer; margin: 10px 8px 0;
 }
 .btn-choice_01:hover, .btn-choice_02:hover { background: #538ec3; }
@@ -118,7 +118,7 @@
 .btn-back:hover { background: #eaf3fb; }
 .btn-next {
   width: 140px; height: 50px; font-size: 16px; border-radius: 6px; cursor: pointer;
-  border: 2px solid #004aac; background: #004aac; color: #fff; transition: .15s;
+  border: 2px solid #185cb6; background: #185cb6; color: #fff; transition: .15s;
 }
 .btn-next:hover { background: #fff; color: #004aac; }
 
