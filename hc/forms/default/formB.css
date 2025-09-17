@@ -84,12 +84,12 @@
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(0,0,0,.06);
 }
 .cb-text {
-  position: relative; background: #b6b6b6; border-radius: 999px; padding: 10px 16px;
+  position: relative; background: #dde1e6; border-radius: 999px; padding: 10px 16px;
   color: #000; font-size: 11px; font-family: Noto Sans JP, sans-serif; font-weight: 700;
 }
 .cb-text:after {
   content: ""; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
-  border: 8px solid transparent; border-right-color: #b6b6b6;
+  border: 8px solid transparent; border-right-color: #dde1e6;
 }
 .coach-bubble + label { margin-top: 10px; display: block; }
 
