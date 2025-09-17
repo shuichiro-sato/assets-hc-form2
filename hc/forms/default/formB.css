@@ -89,7 +89,7 @@
 }
 .cb-text:after {
   content: ""; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
-  border: 8px solid transparent; border-right-color: #cfeff1;
+  border: 8px solid transparent; border-right-color: #b6b6b6;
 }
 .coach-bubble + label { margin-top: 10px; display: block; }
 
