@@ -193,8 +193,8 @@
 .btn-submit.active:hover { background: var(--orange-hover); }
 
 /* shadows */
-.btn-choice_01, .btn-choice_02 { box-shadow: 0 5px 0 #2c6aa6, 0 8px 14px #0000001f; transition: .15s; }
-.btn-next { box-shadow: 0 4px 0 #2c6aa6, 0 5px 9px #0000001f; }
+.btn-choice_01, .btn-choice_02 { box-shadow: 0 5px 0 #dde1e6, 0 8px 14px #dde1e6; transition: .15s; }
+.btn-next { box-shadow: 0 4px 0 #2c6aa6, 0 5px 9px #dde1e6; }
 
 /* loading overlay */
 .loading-overlay {
