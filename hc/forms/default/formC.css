@@ -119,7 +119,7 @@
   cursor: pointer;
 }
 
-.btn-choice_01:hover, .btn-choice_02:hover, .btn-choice_03:hover { background: #538ec3; }
+.btn-choice_01, .btn-choice_02, .btn-choice_03:hover { background: #538ec3; }
 
 /* nav buttons */
 .nav-row {
