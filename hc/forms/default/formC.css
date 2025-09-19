@@ -100,12 +100,12 @@
 }
 
 /* choices */
-.choice-row { margin-top: 8px; }
+.choice-row { margin-top: 8px; item-align: column;}
 .btn-choice_01, .btn-choice_02, .btn-choice_03 {
-  width: 200px; height: 80px; font-size: 18px; background: #185cb6; color: #fff;
+  width: 300px; height: 80px; font-size: 18px; background: #185cb6; color: #fff;
   border: none; border-radius: 6px; cursor: pointer; margin: 10px 8px 0;
 }
-.btn-choice_01:hover, .btn-choice_02:hover { background: #538ec3; }
+.btn-choice_01:hover, .btn-choice_02,.btn-choice_03 :hover { background: #538ec3; }
 
 /* nav buttons */
 .nav-row {
