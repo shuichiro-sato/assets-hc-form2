@@ -1,4 +1,4 @@
- @import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap);
 
 :root {
   --orange: #f07c00;
@@ -65,7 +65,7 @@
 .stepper .item.done .dot { background: #e6eef4; border-color: #2c6aa6; color: var(--brand); }
 .stepper .label { display: block; margin-top: 8px; font-size: 8px; color: #6b7280; white-space: nowrap; }
 @media (max-width: 560px) {
-  .stepper . { font-size: 11px; white-space: normal; }
+  .stepper .label { font-size: 11px; white-space: normal; }
 }
 
 /* step base */
@@ -122,8 +122,19 @@
 .btn-choice_01:hover,
 .btn-choice_02:hover,
 .btn-choice_03:hover { background:  #eaf3fb; color: #004aac;}
-.grid-2{width:80%;margin:8px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn-box{width:100%;height:64px;font-size:18px;background:#185cb6;color:#fff;border: 2px solid #004aac;border-radius:6px;cursor:pointer;font-weight:700;box-shadow:0 6px 0 #bfbfbf,0 8px 16px rgba(0,0,0,.12);transition:transform .05s,box-shadow .15s}
+
+.grid-2{
+  width:80%;
+  margin:8px auto 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+.btn-box{
+  width:100%;height:64px;font-size:18px;background:#185cb6;color:#fff;
+  border: 2px solid #004aac;border-radius:6px;cursor:pointer;font-weight:700;
+  box-shadow:0 6px 0 #bfbfbf,0 8px 16px rgba(0,0,0,.12);transition:transform .05s,box-shadow .15s
+}
 .btn-box:hover{ background:  #eaf3fb; color: #004aac;}
 .btn-box:active{transform:translateY(2px);box-shadow:0 4px 0 #bfbfbf,0 6px 12px rgba(0,0,0,.16)}
 
@@ -228,7 +239,7 @@
   border-radius: 50%; animation: spin 1s linear infinite;
 }
 .spinner-text {
-  font-family: Noto Sans JP, sans-serif; font-size: 16px; font-weight: 700; color: var(--brand);
+  font-family: Noto Sans JP, sans-serif; font-size: 16px; font-weight: 700; color: #sfbrand;
   user-select: none; text-align: center;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -248,14 +259,7 @@
 }
 #entryForm { box-sizing: border-box; }
 
-@media (max-width: 560px) {
-  #entryForm { padding: 0 30px !important; }
-  .stepper { padding-top: calc(var(--dot-size) / 2 + 16px) !important; }
-  #locationDropdown .group[data-expanded="false"] .group-items { display: none; }
-  #locationDropdown input[type="checkbox"] { width: 22px; height: 22px; }
-}
-
-/* width reset (later override) */
+/* 幅の再指定（必要なら維持） */
 #entryForm, #step-form { width: 60% !important; margin: 0 auto !important; max-width: none !important; }
 @media (max-width: 560px) {
   #entryForm, #step-form { width: 100% !important; padding: 0 30px !important; }
@@ -266,37 +270,32 @@
     padding: 0 10px !important; box-sizing: border-box !important; margin: 0 auto !important; width: 100% !important;
   }
   #step-form {
-    width: 100% !important; max-width: 520px !important; margin: 0 auto !important; box-sizing: border-box !important;
+    width: 100% !important; max-width: 520px !重要; margin: 0 auto !important; box-sizing: border-box !important;
   }
 }
 
-/* ===== モバイル時：ロケーションドロップダウンの調整 ===== */
+/* モバイル時：ロケーションドロップダウンの調整 */
 @media (max-width: 560px) {
-  /* 基準をフォーム全体にする */
   #step-form { position: relative !important; }
-
-  /* コンテナは静的配置にしてフォーム基準へ */
   #locationMulti { position: static !important; }
-
-  /* ドロップダウンをフォーム上端から20px、横はフォームと同じだけ内側へ（#entryForm が 0 10px のため左右10px） */
   #locationDropdown {
     position: absolute !important;
     top: 40px !important;
     left: 30px !important;
     right: 30px !important;
     z-index: 1000 !important;
-    font-size: 18px !important;           /* 中身の基本文字サイズを少し大きく */
+    font-size: 18px !important;
     -webkit-text-size-adjust: 100%;
   }
-
-  /* iOSで青く・小さくなるのを抑止：色を黒、装飾なし、サイズ大きめに統一 */
   #locationDropdown .group-toggle,
   #locationDropdown .group-items label,
   #locationDropdown a,
   #locationDropdown .group-items label span {
     color: #000 !important;
     text-decoration: none !important;
-    font-size: 14px !important;            /* ラベルを大きく */
+    font-size: 14px !important;
     line-height: 1.6 !important;
   }
+  #locationDropdown .group[data-expanded="false"] .group-items { display: none; }
+  #locationDropdown input[type="checkbox"] { width: 22px; height: 22px; }
 }
