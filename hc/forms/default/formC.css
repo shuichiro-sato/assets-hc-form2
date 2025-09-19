@@ -274,29 +274,24 @@
 @media (max-width: 560px) {
   /* 基準をフォーム全体にする */
   #step-form { position: relative !important; }
+ 
+ #location {
+  position: absolute !important;  /* 位置固定したい場合。通常のフローで良ければこの行を削除 */
+  top: 40px !important;
+  left: 30px !important;
+  right: 30px !important;
+  z-index: 1000 !important;
+  font-size: 18px !important;
+  -webkit-text-size-adjust: 100%;
+  height: 44px;             /* 使い勝手向上 */
+  padding: 8px 12px;        /* 余白 */
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+}
 
-  /* コンテナは静的配置にしてフォーム基準へ */
-  #locationMulti { position: static !important; }
-
-  /* ドロップダウンをフォーム上端から20px、横はフォームと同じだけ内側へ（#entryForm が 0 10px のため左右10px） */
-  #locationDropdown {
-    position: absolute !important;
-    top: 40px !important;
-    left: 30px !important;
-    right: 30px !important;
-    z-index: 1000 !important;
-    font-size: 18px !important;           /* 中身の基本文字サイズを少し大きく */
-    -webkit-text-size-adjust: 100%;
-  }
-
-  /* iOSで青く・小さくなるのを抑止：色を黒、装飾なし、サイズ大きめに統一 */
-  #locationDropdown .group-toggle,
-  #locationDropdown .group-items label,
-  #locationDropdown a,
-  #locationDropdown .group-items label span {
-    color: #000 !important;
-    text-decoration: none !important;
-    font-size: 14px !important;            /* ラベルを大きく */
-    line-height: 1.6 !important;
-  }
+/* モバイル調整（必要に応じて） */
+@media (max-width: 560px) {
+  #entryForm { padding: 0 30px !important; }
 }
